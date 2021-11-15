@@ -5,6 +5,39 @@ export OSH=/home/wasser/.oh-my-bash
 # it'll load a random theme each time that oh-my-bash is loaded.
 #OSH_THEME=""
 
+export PATH=$PATH:/home/wasser/.anime-terminal
+#Extraction
+#use ex <file>
+#from github.com/brunomontezano
+ex ()
+{
+  if [ -f $1 ] ; then
+    case $1 in
+      *.tar.bz2)   tar xjf $1   ;;
+      *.tar.gz)    tar xzf $1   ;;
+      *.bz2)       bunzip2 $1   ;;
+      *.rar)       unrar x $1     ;;
+      *.gz)        gunzip $1    ;;
+      *.tar)       tar xf $1    ;;
+      *.tbz2)      tar xjf $1   ;;
+      *.tgz)       tar xzf $1   ;;
+      *.zip)       unzip $1     ;;
+      *.Z)         uncompress $1;;
+      *.7z)        7z x $1      ;;
+      *)           echo "'$1' cannot be extracted via ex()" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}
+
+# Vim
+alias vim='sudo nvim'
+alias mkc='~/.make.sh'
+
+#export
+export EDITOR="nvim"
+export BROWSER="brave"
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 

@@ -1,5 +1,5 @@
 # Dotfiles
-My ~/.config for i3 and outher packages(picom and i3status).
+My ~/.config for i3/bspwm and outher packages(picom,termite).
 
 ### How install 
 - ainda nao completo :)

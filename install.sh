@@ -1,4 +1,4 @@
-#!bin/sh
+#!/bin/bash
 
 main()
 {
@@ -8,9 +8,8 @@ main()
 	#preparando yay
 	yay()
 	
-	cd ~/
-
-	#install oh my bash
+		#install oh my bash
+	
 	bash -c "$(wget https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh -O -)"
 
 	#pegar dotfiles of git
@@ -36,4 +35,5 @@ yay()
 	cd ~/
 	rm -rf yay
 }
-main()
+#main()
+yay

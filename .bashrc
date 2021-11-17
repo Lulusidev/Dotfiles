@@ -3,12 +3,30 @@ export OSH=/home/wasser/.oh-my-bash
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-bash is loaded.
-#OSH_THEME=""
+OSH_THEME="tonotdo"
 
 export PATH=$PATH:/home/wasser/.anime-terminal
 #Extraction
 #use ex <file>
 #from github.com/brunomontezano
+
+txtpdf ()
+{
+if [ $# -ne 2 ]; then
+	echo 'bro,use txtpdf [arquive_with_text]'
+else
+	#need ghost script and enscript to work
+ 
+	psout=${1/.txt/.ps}
+	pdfout=${1/.txt/.pdf}
+
+	enscript -p $psout $1
+
+	ps2pdf $psout $pdfout
+	rm -f $psout
+fi
+}
+
 ex ()
 {
   if [ -f $1 ] ; then
@@ -33,7 +51,16 @@ ex ()
 
 # Vim
 alias vim='sudo nvim'
-alias mkc='~/.make.sh'
+#alias mkc='~/.make.sh'
+mkc () {
+if [ $# -ne 2 ]; then
+        echo 'bro,use make [source.c] [outputname]'
+else
+        echo 'clang -ggdb0 -O0 -std=c11 -Wall -Werror -Wextra -Wno-sign-compare -Wno-unused-parameter -Wno-unused-variable -Wshadow  source.c  -lcrypt -lm -o out'
+        clang -ggdb0 -O0 -std=c11 -Wall -Werror -Wextra -Wno-sign-compare -Wno-unused-parameter -Wno-unused-variable -Wshadow    $1  -lcrypt -lm -o $2
+fi
+
+}
 
 #export
 export EDITOR="nvim"
@@ -132,4 +159,4 @@ source $OSH/oh-my-bash.sh
 # Example aliases
 # alias bashconfig="mate ~/.bashrc"
 # alias ohmybash="mate ~/.oh-my-bash"
-neofetch
+pfetch

@@ -9,10 +9,24 @@ export PATH=$PATH:/home/wasser/.anime-terminal
 #Extraction
 #use ex <file>
 #from github.com/brunomontezano
+genadd-ssh (){
 
-txtpdf ()
-{
 if [ $# -ne 2 ]; then
+	echo "HI Bro,use genadd-ssh [file-ssh] [email]"
+else
+	ssh-keygen -o -a 100 -t $1 -f ~/.ssh/$1 -C $2
+	eval "$(ssh-agent -s)"
+	ssh-add ~/.ssh/$1
+fi
+}
+
+syncvarlocal(){
+	ls | sort | awk -v re='(.*)-[^-]*-[^-]*$' 'match($0, re, a) { if (!(a[1] in p)){p[a[1]]} else {print} }' | xargs sudo rm -rf
+}
+
+txttopdf ()
+{
+if [ $# -ne 1 ]; then
 	echo 'bro,use txtpdf [arquive_with_text]'
 else
 	#need ghost script and enscript to work
@@ -50,7 +64,8 @@ ex ()
 }
 
 # Vim
-alias vim='sudo nvim'
+alias vim='nvim'
+alias catl='less'
 #alias mkc='~/.make.sh'
 mkc () {
 if [ $# -ne 2 ]; then
@@ -159,4 +174,4 @@ source $OSH/oh-my-bash.sh
 # Example aliases
 # alias bashconfig="mate ~/.bashrc"
 # alias ohmybash="mate ~/.oh-my-bash"
-pfetch
+uwufetch

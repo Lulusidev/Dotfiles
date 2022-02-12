@@ -23,6 +23,5 @@ nnoremap <C-f> :NERDTreeFind<CR>
 
 set bg=dark
 
-
 " Theme
 colorscheme gruvbox

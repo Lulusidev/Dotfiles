@@ -1,39 +1,50 @@
 font:
-    normal:
-    
-      family: "Knack Nerd Font"
-      style: Regular
-  
-    bold:
-      family: "Knack Nerd Font"
-      style: Bold
-    size: 9.0
-
-colors:
-  background: '#171717'
-  foreground: '#F8F8F8'
   normal:
-    black:   '#171717'
-    red:     '#d81765'
-    green:   '#97d01a'
-    yellow:  '#ffa800'
-    blue:    '#16b1fb'
-    magenta: '#ff2491'
-    cyan:    '#0fdcb6'
-    white:   '#ebebeb'
+    family: JetBrains Mono
+    style: Regular
+    size: 17.0
 
-  # Bright colors
-  bright:
-    black:   '#38252C'
-    red:     '#ff0000'
-    green:   '#76b639'
-    yellow:  '#e1a126'
-    blue:    '#289cd5'
-    magenta: '#ff2491'
-    cyan:    '#0a9b81'
-    white:   '#f8f8f8'
+window:
+  dynamic_padding: false
+  dimensions:
+    columns: 100
+    lines: 85
+  startup_mode: Windowed
+
+import:
+  - ~/.cache/wal/colors-alacritty.yml
+
+#shell:
+#  program: /usr/bin/zsh
+#  args:
+#    - --command=tmux
+
+mouse_bindings:
+  - { mouse: Middle, action: PasteSelection }
 
 key_bindings:
-  - { key: V,              mods: Control|Shift,                   action: Paste            }
-  - { key: C,              mods: Control|Shift,                   action: Copy             }
-  - {key: Insert,          mods: Shift,                         action: PasteSelection}
+    # (Windows, Linux, and BSD only)
+  - { key: V,        mods: Control|Shift, action: Paste            }
+  - { key: C,        mods: Control|Shift, action: Copy             }
+  - { key: Insert,   mods: Shift,         action: PasteSelection   }
+  - { key: Key0,     mods: Control,       action: ResetFontSize    }
+  - { key: Equals,   mods: Control,       action: IncreaseFontSize }
+    #- { key: Add,      mods: Control,       action: IncreaseFontSize }
+    #- { key: Subtract, mods: Control,       action: DecreaseFontSize }
+  - { key: Minus,    mods: Control,       action: DecreaseFontSize }
+
+  - { key: Paste,                    action: Paste                            }
+  - { key: Copy,                     action: Copy                             }
+  - { key: L,         mods: Control, action: ClearLogNotice                   }
+  - { key: L,         mods: Control, chars: "\x0c"                            }
+  - { key: PageUp,    mods: Shift,   action: ScrollPageUp,   mode: ~Alt       }
+  - { key: PageDown,  mods: Shift,   action: ScrollPageDown, mode: ~Alt       }
+  - { key: Home,      mods: Shift,   action: ScrollToTop,    mode: ~Alt       }
+  - { key: End,       mods: Shift,   action: ScrollToBottom, mode: ~Alt       }
+  - { key: W,        mods: Command,       chars: "\x02&"                       }  # close tab (kill)
+  - { key: T,        mods: Command,       chars: "\x02c"                       }  # new tab
+  - { key: RBracket, mods: Command|Shift, chars: "\x02n"                       }  # select next tab
+  - { key: LBracket, mods: Command|Shift, chars: "\x02p"                       }  # select previous tab
+  - { key: RBracket, mods: Command,       chars: "\x02o"                       }  # select next pane
+  - { key: LBracket, mods: Command,       chars: "\x02;"                       }  # select last (previously used) pane
+  - { key: F,        mods: Command,       chars: "\x02/"                       }
